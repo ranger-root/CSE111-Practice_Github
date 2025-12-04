@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script>
+
+           //form validation example
+           function validateForm() {
+               let name = document.getElementById("name").value;
+               let email = document.getElementById("email").value;
+               let pass1 = document.getElementById("pass1").value;
+               let pass2 = document.getElementById("pass2").value;
+               let age = document.getElementById("age").value;
+
+
+               //required fields
+                if (name === "" ) {
+                    alert("Name must be filled out");
+                    return false;   
+                }
+
+                //Email format check
+                let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+                if (!email.match(emailPattern)) {
+                    alert("Please enter a valid email address.");
+                    return false;
+                }
+
+                //Password match check
+                if (pass1 !== pass2) {
+                    alert("Passwords do not match.");
+                    return false;
+                }
+
+                //Age restriction
+                if (isNaN(age) || age < 18) {
+                    alert("You must be at least 18 years old.");
+                    return false;
+                }
+                alert("Form submitted successfully!");
+                return true;
+           }
+        </script>
+    </head>
+    <body>
+        <h2>Form Validation Example</h2>
+        <form onsubmit="return validateForm()">
+            Name: <input type="text" id="name"><br><br>
+            Email: <input type="text" id="email"><br><br>
+            Password: <input type="password" id="pass1"><br><br>
+            Confirm Password: <input type="password" id="pass2"><br><br>
+            Age: <input type="text" id="age"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+    </body>
+</html>
